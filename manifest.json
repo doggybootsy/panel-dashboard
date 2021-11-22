@@ -1,0 +1,7 @@
+{
+  "name": "Panel Dashboard",
+  "version": "1.0.0",
+  "description": "Adds a button in the user panel to go the vizality dashboard",
+  "author": "Doggybootsy",
+  "license": "MIT"
+}
