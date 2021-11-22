@@ -15,14 +15,12 @@ export default class panelDashboard extends Plugin {
   start () {
     FluxDispatcher.subscribe("CHANNEL_SELECT", this.channelSwitch = ({ guildId, channelId, messageId }) => this.settings.set("oldChannel", [guildId, channelId, messageId]))
     patch("AccountConnected", getOwnerInstance(ele).__proto__, "render", (_, res) => {
-      res.props.children[res.props.children.length - 1].props.children.unshift(
-        <PanelButton 
-          icon={() => ( <Icon name="Vizality" size={20} /> )}
-          tooltipText="Dashboard"
-          onClick={() => this.toggle.apply(this)}
-          onContextMenu={(evt) => contextMenu.openContextMenu(evt, () => ( <SettingsContextMenu /> ))}
-        />
-      )
+      res.props.children[res.props.children.length - 1].props.children.unshift(<PanelButton 
+        icon={() => <Icon name="Vizality" size={20} />}
+        tooltipText="Dashboard"
+        onClick={() => this.toggle.apply(this)}
+        onContextMenu={(evt) => contextMenu.openContextMenu(evt, () => <SettingsContextMenu />)}
+      />)
     })
   }
   stop () { FluxDispatcher.unsubscribe("CHANNEL_SELECT", this.channelSwitch) }
